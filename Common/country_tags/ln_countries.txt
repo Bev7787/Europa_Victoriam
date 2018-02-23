@@ -1,0 +1,4 @@
+PUE = "countries/Puerto Rico.txt"
+JAM = "countries/Jamaica.txt"
+BAH = "countries/The Bahamas.txt"
+KON = "countries/Constantinople.txt"

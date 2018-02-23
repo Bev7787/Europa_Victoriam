@@ -1,0 +1,195 @@
+ideas = {
+	country = {
+		HAI_idea_hispaniolan_privateering = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			removal_cost = -1
+			
+			modifier = {
+				convoy_raiding_efficiency_factor = 0.33
+				trade_opinion_factor = -0.8
+			}
+		}
+		HAI_idea_cuban_terrorism = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.1
+				production_speed_buildings_factor = -0.2
+				industry_repair_factor = -0.75
+			}
+		}
+		CUB_idea_pro_hispaniolan_education = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			removal_cost = -1
+			
+			modifier = {
+				unity_factor = -0.2
+				political_power_gain = -0.2
+				conscription_factor = -0.75
+			}
+		}
+		HAI_idea_unrest_censored = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				NOT = {
+					has_government = democratic
+					has_government = internationalism
+					has_government = socialism
+				}
+			}
+			removal_cost = -1
+			
+			modifier = {
+				unity_factor = -0.05
+				political_power_gain = -0.1
+			}
+		}
+		HAI_idea_civil_unrest = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			removal_cost = -1
+			
+			modifier = {
+				unity_factor_weekly = -0.01
+				political_power_gain = -0.4
+			}
+		}
+		HAI_idea_reeducation_camps = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				OR = {
+					has_government = authoritarian
+					has_government = fascism
+					has_government = nationalist_communist
+					has_government = theocracy
+				}
+			}
+			modifier = {
+				unity_factor = 0.1
+				political_power_gain = -0.2
+				drift_defence_factor = 0.75
+				fascism_drift = 0.03
+				nationalist_communist = 0.01
+				conscription_factor = -0.33
+				army_attack_factor = 0.2
+				army_core_defence_factor = 0.15
+				army_defence_factor = 0.1
+			}
+		}
+		HAI_idea_reduced_cuban_terrorism = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.05
+				production_speed_buildings_factor = -0.15
+				industry_repair_factor = -0.5
+			}
+		}
+		HAI_idea_terrorism_defeated = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			
+			modifier = {
+				unity_factor = 0.15
+				army_core_defence_factor = 0.2
+				industry_repair_factor = 0.33
+			}
+		}
+		HAI_idea_cult_of_personality = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				OR = {
+					has_government = fascism
+					has_government = nationalist_communist
+				}
+			}
+			removal_cost = -1
+			
+			modifier = {
+				unity_factor = 0.1
+				nationalist_communist_drift = 0.03
+				drift_defence_factor = 0.25
+				conscription = 0.02
+			}
+		}
+		HAI_idea_cubans_restricted = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				OR = {
+					has_government = nationalist_communist
+					has_government = fascism
+					has_government = monarchist
+					has_government = authoritarian
+					has_government = theocracy
+				}
+			}
+			removal_cost = -1
+			
+			modifier = {
+				unity_factor = -0.05
+				political_power_factor = -0.05
+				conscription_factor = -0.1
+				drift_defence_factor = 0.2
+				fascism_drift = 0.01
+				nationalist_communist_drift = 0.01
+			}
+		}
+		CUB_idea_cubans_restricted = {
+			allowed = {
+				is_puppet_of = HAI
+				HAI = {
+					has_completed_focus = HAI_restrict_cubans
+				}
+			}
+			allowed_civil_war = {
+				always = no
+			}
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = -0.8
+				unity_factor = -0.25
+				conscription_factor = -0.5
+			}
+		}
+	}
+}

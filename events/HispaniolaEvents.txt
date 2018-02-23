@@ -1,0 +1,194 @@
+add_namespace = hispaniola
+# Cuban Terrorists
+country_event = {
+	id = hispaniola.1
+	title = hispaniola.1.t
+	desc = hispaniola.1.desc
+	
+	fire_only_once = yes
+	trigger = {
+		tag = HAI
+		CUB = {
+			is_puppet_of = HAI
+		}
+		date > 1936.4.30
+		date < 1936.5.30
+	}
+	mean_time_to_happen = {
+		days = 3
+	}
+	immediate = {
+		set_country_flag = HAI_flag_cuban_election_terrorist_attack
+	}
+	# Postpone Elections
+	option = {
+		name = hispaniola.1.a
+		ai_chance = { factor = 25 }
+		set_country_flag = HAI_flag_postpone_elections
+		add_political_power = 50
+		add_national_unity = -0.05
+	}
+	option = {
+		name = hispaniola.1.b
+		ai_chance = { factor = 75 }
+		set_country_flag = HAI_flag_elections_go_on
+		add_political_power = -25
+		add_national_unity = 0.05
+	}
+}
+# 1937 Election
+country_event = {
+	id = hispaniola.2
+	title = hispaniola.2.t
+	desc = hispaniola.2.desc
+	
+	fire_only_once = yes
+	trigger = {
+		tag = HAI
+		has_country_flag = HAI_flag_elections_go_on
+		NOT = {
+			has_country_flag = HAI_flag_postpone_elections
+			has_country_flag = HAI_flag_1937_elections_ongoing
+			has_country_flag = HAI_flag_1937_elections_complete
+		}
+		date > 1936.12.31
+		date < 1937.1.31
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	immediate = {
+		set_country_flag = HAI_flag_1937_elections_ongoing
+	}
+	# NatCom
+	option = {
+		name = hispaniola.2.a
+		set_country_flag = HAI_flag_1937_natcom_elected
+		set_country_flag = HAI_flag_1937_elections_complete
+		clr_country_flag = HAI_flag_1937_elections_ongoing
+		clr_country_flag = HAI_flag_elections_go_on
+	}
+	#Socialists
+	option = {
+		name = hispaniola.2.b
+		set_country_flag = HAI_flag_1937_socialist_elected
+		set_country_flag = HAI_flag_1937_elections_complete
+		clr_country_flag = HAI_flag_1937_elections_ongoing
+		clr_country_flag = HAI_flag_elections_go_on
+		set_politics = {
+			ruling_party = socialism
+			elections_allowed = no
+		}
+		add_popularty = {
+			ideology = socialism
+			popularity = 25
+		}
+	}
+	# Commie
+	option = {
+		name = hispaniola.2.c
+		set_country_flag = HAI_flag_1937_commie_elected
+		set_country_flag = HAI_flag_1937_elections_complete
+		clr_country_flag = HAI_flag_1937_elections_ongoing
+		clr_country_flag = HAI_flag_elections_go_on
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		add_popularty = {
+			ideology = communism
+			popularity = 20
+		}
+	}
+	#IntNat
+	option = {
+		name = hispaniola.2.d
+		set_country_flag = HAI_flag_1937_intnat_elected
+		set_country_flag = HAI_flag_1937_elections_complete
+		clr_country_flag = HAI_flag_1937_elections_ongoing
+		clr_country_flag = HAI_flag_elections_go_on
+		set_politics = {
+			ruling_party = internationalism
+			elections_allowed = no
+		}
+		add_popularty = {
+			ideology = internationalism
+			popularity = 30
+		}
+	}
+}
+# Cuban Annexation
+country_event = {
+	id = hispaniola.3
+	title = hispaniola.3.t
+	desc = hispaniola.3.desc
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	# Accept
+	option = {
+		name = hispaniola.3.a
+		HAI = {
+			country_event = { id = hispaniola.4 days = 1 }
+		}
+	}
+	# Refuse
+	option = {
+		name = hispaniola.3.b
+		add_political_power = 100
+		add_national_unity = 0.3
+		if = {
+			limit = {
+				has_idea = CUB_idea_cubans_restricted
+			}
+			remove_ideas = { CUB_idea_cubans_restricted }
+		}
+		if = {
+			limit = {
+				has_idea = CUB_idea_pro_hispaniolan_education
+			}
+			remove_ideas = CUB_idea_pro_hispaniolan_education
+		}
+		HAI = {
+			country_event = { id = hispaniola.5 days = 1 }
+		}
+	}
+}
+country_event = {
+	id = hispaniola.4
+	title = hispaniola.4.t
+	desc = hispaniola.4.desc
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = hispaniola.4.a
+		315 = {
+			add_core_of = HAI
+		}
+		annex_country = { target = CUB transfer_troops = yes }
+		add_named_threat = { threat = 4 name = CUB.annexed }
+		add_political_power = 50
+		set_country_flag = CUB_annexed
+	}
+}
+country_event = {
+	id = hispaniola.5
+	title = hispaniola.5.t
+	desc = hispaniola.5.desc
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = hispaniola.5.a
+		declare_war_on = {
+			target = CUB
+			type = annex_everything
+		}
+		315 = {
+			add_core_of = HAI
+		}
+	}
+}

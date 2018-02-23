@@ -1,0 +1,24 @@
+state={
+	id=743
+	name="STATE_743"
+	provinces={
+		805 1500 1927 1954 2019 2042 3960 4577 4884 4955 5022 5038 5061 6785 6798 6987 7628 7836 7981 10337 10504 10740 10778 10861 10894 12341 12369 12410 12486 12728 12782 
+	}
+
+	history={
+		owner = TEX
+		buildings = {
+			infrastructure = 6
+			industrial_complex = 5
+			air_base = 2
+			arms_complex = 3
+
+		}
+		add_core_of = TEX
+
+	}
+
+	manpower=3883141
+	buildings_max_level_factor=1.000
+	state_category=metropolis
+}

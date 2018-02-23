@@ -1,0 +1,25 @@
+ideas = {
+
+	country = {
+
+		USA_Landons_broken_promise = {
+			
+			allowed = {
+				original_tag = USA
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			
+				modifier = {
+				political_power_cost = 0.8
+				unity_factor = -0.30
+			}
+		}

@@ -1,0 +1,339 @@
+focus_tree = {
+	id = soc_fed_hisponiola_focus
+	
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = HAI
+		}
+	}
+	
+	default = no
+	#######################
+	### Political Stuff ###
+	#######################
+	focus = {
+		id = HAI_cuban_terrorism
+		x = 8
+		y = 0
+		cost = 0
+		available = {
+			always = no
+		}
+		bypass = {
+			has_country_flag = HAI_flag_cuban_election_terrorist_attack
+		}
+		completion_reward = {
+		}
+	}
+	###########################
+	### Fascist/NatCom Path ###
+	###########################
+	focus = {
+		id = HAI_postpone_elections
+		x = 2
+		y = 1
+		cost = 0
+		prerequisite = {
+			focus = HAI_cuban_terrorism
+		}
+		mutually_exclusive = {
+			focus = HAI_elections_go_on
+		}
+		available = {
+			always = no
+		}
+		bypass = {
+			has_country_flag = HAI_flag_postpone_elections
+		}
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = HAI_restrict_cubans
+		x = 2
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = HAI_postpone_elections
+		}
+		completion_reward = {
+			add_ideas = { HAI_idea_cubans_restricted }
+			CUB = {
+				add_ideas = { CUB_idea_cubans_restricted }
+			}
+			add_political_power = -100
+			add_popularity = {
+				ideology = communism
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = socialism
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = internationalism
+				popularity = -0.05
+			}
+		}
+	}
+	focus = {
+		id = HAI_reeducate_cubans
+		x = 2
+		y = 3
+		cost = 10
+		prerequisite = {
+			focus = HAI_restrict_cubans
+		}
+		completion_reward = {
+			CUB = {
+				add_ideas = { 
+					CUB_idea_pro_hispaniolan_education
+					CUB_idea_cuban_reeducation
+				}
+			}
+			add_ideas = { HAI_idea_reduced_cuban_terrorism }
+			remove_ideas = { HAI_idea_cuban_terrorism }
+			add_political_power = -70
+		}
+	}
+	focus = {
+		id = HAI_direct_rule_from_port_au_prince
+		x = 1
+		y = 4
+		cost = 10
+		prerequisite = {
+			focus = HAI_reeducate_cubans
+		}
+		mutually_exclusive = {
+			focus = HAI_root_out_terrorists
+		}
+		will_lead_to_war_with = CUB
+		completion_reward = {
+			CUB = {
+				country_event = { id = hispaniola.3 days = 1 }
+			}
+		}
+	}
+	focus = {
+		id = HAI_root_out_terrorists
+		x = 3
+		y = 4
+		cost = 10
+		prerequisite = {
+			focus = HAI_reeducate_cubans
+		}
+		mutually_exclusive = {
+			focus = HAI_direct_rule_from_port_au_prince
+		}
+		completion_reward = {
+			remove_ideas = { HAI_idea_reduced_cuban_terrorism }
+			add_ideas = { HAI_idea_terrorism_defeated }
+			add_political_power = -200
+			add_national_unity = 0.15
+		}
+	}
+	focus = {
+		id = HAI_abolish_elections
+		x = 2
+		y = 5
+		cost = 10
+		prerequisite = {
+			focus = HAI_direct_rule_from_port_au_prince
+			focus = HAI_root_out_terrorists
+		}
+		completion_reward = {
+			add_ideas = { HAI_idea_civil_unrest }
+			add_national_unity = -0.1
+			add_popularity = {
+				ideology = socialism
+				popularity = -0.25
+			}
+			add_popularity = {
+				ideology = internationalism
+				popularity = -0.25
+			}
+		}
+	}
+	###############
+	### Fascist ###
+	###############
+	focus = {
+		id = HAI_crush_unrest
+		x = 1
+		y = 6
+		cost = 10
+		prerequisite = {
+			focus = HAI_abolish_elections
+		}
+		mutually_exclusive = {
+			focus = HAI_censor_unrest
+		}
+		completion_reward = {
+			remove_ideas = { HAI_idea_civil_unrest }
+			add_ideas = { HAI_idea_unrest_crushed }
+			add_national_unity = -0.1
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = HAI_reeducation_camps
+		x = 1
+		y = 7
+		cost = 10
+		prerequisite = {
+			focus = HAI_crush_unrest
+		}
+		completion_reward = {
+			add_ideas = { HAI_idea_reeducation_camps }
+			add_political_power = -100
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.1
+			}
+		}
+	}
+	############################
+	### Authoritarian NatCom ###
+	############################
+	focus = {
+		id = HAI_censor_unrest
+		x = 3
+		y = 6
+		prerequisite = {
+			focus = HAI_abolish_elections
+		}
+		mutually_exclusive = {
+			focus = HAI_crush_unrest
+		}
+		completion_reward = {
+			remove_ideas = { HAI_idea_civil_unrest }
+			add_ideas = { HAI_idea_unrest_censored }
+			add_political_power = -25
+		}
+	}
+	focus = {
+		id = HAI_cult_of_personality
+		x = 3
+		y = 7
+		prerequisite = {
+			focus = HAI_censor_unrest
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_ideas = { HAI_idea_cult_of_personality }
+		}
+	}
+	#############################
+	### NatCom/Soc/Com/Intnat ###
+	#############################
+	focus = {
+		id = HAI_elections_go_on
+		x = 11
+		y = 1
+		cost = 0
+		prerequisite = {
+			focus = HAI_cuban_terrorism
+		}
+		mutually_exclusive = {
+			focus = HAI_postpone_elections
+		}
+		available = {
+			always = no
+		}
+		bypass = {
+			has_country_flag = HAI_flag_elections_go_on
+		}
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = HAI_natcom_victory
+		x = 7
+		y = 2
+		cost = 0
+		prerequisite = {
+			focus = HAI_elections_go_on
+		}
+		mutually_exclusive = {
+			focus = HAI_socialist_victory
+			focus = HAI_commie_victory
+			focus = HAI_intnat_victory
+		}
+		available = {
+			always = no
+		}
+		bypass = {
+			has_country_flag = HAI_flag_1937_natcom_elected
+		}
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = HAI_socialist_victory
+		x = 10
+		y = 2
+		cost = 0
+		prerequisite = {
+			focus = HAI_elections_go_on
+		}
+		mutually_exclusive = {
+			focus = HAI_natcom_victory
+			focus = HAI_commie_victory
+			focus = HAI_intnat_victory
+		}
+		available = {
+			always = no
+		}
+		bypass = {
+			has_country_flag = HAI_flag_1937_socialist_elected
+		}
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = HAI_commie_victory
+		x = 13
+		y = 2
+		cost = 0
+		prerequisite = {
+			focus = HAI_elections_go_on
+		}
+		mutually_exclusive = {
+			focus = HAI_natcom_victory
+			focus = HAI_socialist_victory
+			focus = HAI_intnat_victory
+		}
+		available = {
+			always = no
+		}
+		bypass = {
+			has_country_flag = HAI_flag_1937_commie_elected
+		}
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = HAI_intnat_victory
+		x = 16
+		y = 2
+		cost = 0
+		prerequisite = {
+			focus = HAI_elections_go_on
+		}
+		mutually_exclusive = {
+			focus = HAI_natcom_victory
+			focus = HAI_socialist_victory
+			focus = HAI_commie_victory
+		}
+		available = {
+			always = no
+		}
+		bypass = {
+			has_country_flag = HAI_flag_1937_intnat_elected
+		}
+		completion_reward = {
+		}
+	}
+}
