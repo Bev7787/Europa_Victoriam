@@ -141,23 +141,23 @@ set_national_unity = 0.4
 set_politics = {
 
 	parties = {
-		democratic = { 
-			popularity = 69
+		nationalist_communist = { 
+			popularity = 40
 		}
 
-		fascism = {
-			popularity = 1
+		internationalism = {
+			popularity = 40
 		}
 		
 		communism = {
-			popularity = 30
+			popularity = 20
 		}
 	}
 	
-	ruling_party = democratic
+	ruling_party = nationalist_communist
 	last_election = "1932.5.1"
 	election_frequency = 48
-	elections_allowed = yes
+	elections_allowed = no
 }
 
 add_ideas = {
@@ -195,9 +195,9 @@ create_country_leader = {
 create_country_leader = {
 	name = "Maurice Thorez"
 	desc = "POLITICS_MAURICE_THOREZ_DESC"
-	picture = "Portrait_France_Generic_3.dds"
+	picture = "Thorez.dds"
 	expire = "1965.1.1"
-	ideology = 	stalinism
+	ideology = communist_supremacist
 	traits = {
 		
 	}
